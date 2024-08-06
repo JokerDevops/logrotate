@@ -16,6 +16,8 @@ RUN export CONTAINER_USER=logrotate && \
       tar \
       gzip \
       wget \
+      tini \
+      bash \
       tzdata && \
     if  [ "${LOGROTATE_VERSION}" = "latest" ]; \
       then apk add logrotate ; \
@@ -23,6 +25,7 @@ RUN export CONTAINER_USER=logrotate && \
     fi && \
     mkdir -p /usr/bin/logrotate.d && \
     wget -O /usr/bin/go-cron http://bspackage.ss.bscstorage.com/release/go-cron-$TARGETARCH && \
+    chmod +x /usr/bin/go-cron && \  
     apk del \
       wget && \
     rm -rf /var/cache/apk/* && rm -rf /tmp/*
