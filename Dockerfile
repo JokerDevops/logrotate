@@ -53,3 +53,5 @@ COPY logrotateCreateConf.sh /usr/bin/logrotate.d/logrotateCreateConf.sh
 ENTRYPOINT ["/sbin/tini","--","/usr/bin/logrotate.d/docker-entrypoint.sh"]
 VOLUME ["/logrotate-status"]
 CMD ["cron"]
+
+ENV TZ="Asia/Shanghai"
